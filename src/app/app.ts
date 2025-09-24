@@ -1,12 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Layout } from './layout/layout'; // adjust path if needed
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Layout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  appName = 'Модний одяг';
 }
