@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-layout',
   imports: [RouterModule],
   templateUrl: './layout.html',
-  styleUrl: './layout.css'
+  styleUrls: ['./layout.css']
 })
 export class Layout {
     appName = 'Модний одяг';

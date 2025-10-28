@@ -1,4 +1,4 @@
-import { Layout } from './layout/layout'; // adjust path if needed
+import { Layout } from './layout/layout';
 import { Component } from '@angular/core';
 
 @Component({
