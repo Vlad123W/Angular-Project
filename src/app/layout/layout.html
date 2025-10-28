@@ -30,6 +30,7 @@
 <main class="container safe-top safe-bottom" style="text-align:center; padding: 4rem 5%;">
   <h2>Наші тренди</h2>
   <p>Найкраще зі світу моди вже тут</p>
+  <app-items-list></app-items-list>
 </main>
 
 <footer>
@@ -68,7 +69,6 @@
 </footer>
 
 <script>
-  // Анімація скролу для хедера (українською)
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     header.classList.toggle("scrolled", window.scrollY > 50);
