@@ -1,11 +1,76 @@
-<header>
-  <h1>{{ appName }}</h1>
+<header id="header">
+  <div class="header-inner">
+    <div class="logo">{{ appName }}</div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Новинки</a></li>
+        <li><a href="#">Жіноче</a></li>
+        <li><a href="#">Чоловіче</a></li>
+        <li><a href="#">Lookbook</a></li>
+        <li><a href="#">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <div class="icons">
+      <span title="Пошук">🔍</span>
+      <span title="Профіль">👤</span>
+      <span title="Кошик">🛒</span>
+    </div>
+  </div>
 </header>
 
-<main>
-  <router-outlet></router-outlet>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Колекція 2025</h1>
+    <p>Елегантність та мінімалізм у кожній деталі</p>
+  </div>
+</section>
+
+<main class="container safe-top safe-bottom" style="text-align:center; padding: 4rem 5%;">
+  <h2>Наші тренди</h2>
+  <p>Найкраще зі світу моди вже тут</p>
 </main>
 
 <footer>
-  <p>© 2025 Модний одяг</p>
+  <div class="footer-content">
+    <div>
+      <div class="logo">{{ appName }}</div>
+      <p>Одяг, який говорить за вас</p>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#">Новинки</a></li>
+        <li><a href="#">Жіноче</a></li>
+        <li><a href="#">Чоловіче</a></li>
+        <li><a href="#">Lookbook</a></li>
+        <li><a href="#">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <div class="subscribe">
+        <input type="email" placeholder="Ваш email">
+        <button>Підписатися</button>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="TikTok">🎵</a>
+        <a href="#" aria-label="Pinterest">📌</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © 2025 {{ appName }}. Всі права захищені.
+  </div>
 </footer>
+
+<script>
+  // Анімація скролу для хедера (українською)
+  window.addEventListener("scroll", () => {
+    const header = document.getElementById("header");
+    header.classList.toggle("scrolled", window.scrollY > 50);
+  });
+</script>
