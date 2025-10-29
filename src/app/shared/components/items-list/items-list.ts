@@ -19,10 +19,10 @@ export class ItemsListComponent {
         category: 'men',
         description: 'Елегантний чоловічий костюм темно-синього кольору',
         image: {
-            url: '/assets/images/suit.jpg',
+            url: 'suit.jpg',
             alt: 'Класичний чоловічий костюм',
-            width: 800,
-            height: 1200
+            width: 300,
+            height: 400
         },
         isNew: true
     },
@@ -33,10 +33,10 @@ export class ItemsListComponent {
         category: 'women',
         description: 'Довга вечірня сукня з мереживом',
         image: {
-            url: '/assets/images/dress.jpg',
+            url: 'dress.jpg',
             alt: 'Вечірня сукня',
-            width: 800,
-            height: 1200
+            width: 300,
+            height: 400
         },
         isNew: true
     },
@@ -47,10 +47,10 @@ export class ItemsListComponent {
         category: 'men',
         description: 'Стильна шкіряна куртка чорного кольору',
         image: {
-            url: '/assets/images/leather-jacket.jpg',
+            url: 'leather-jacket.jpg',
             alt: 'Шкіряна куртка',
-            width: 800,
-            height: 1200
+            width: 300,
+            height: 400
         },
         isNew: false
     },
@@ -61,10 +61,10 @@ export class ItemsListComponent {
         category: 'women',
         description: 'Елегантне пальто з кашеміру бежевого кольору',
         image: {
-            url: '/assets/images/coat.jpg',
+            url: 'coat.jpg',
             alt: 'Кашемірове пальто',
-            width: 800,
-            height: 1200
+            width: 300,
+            height: 400
         },
         isNew: true
     }
