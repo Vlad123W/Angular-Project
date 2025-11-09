@@ -11,4 +11,13 @@ import { Product } from '../core/product';
 })
 export class ItemCardComponent {
   @Input() product!: Product;
+ 
+  getCategoryColor(): string {
+  switch(this.product.category.toLowerCase()) {
+    case 'men': return '#90caf9';
+    case 'women': return '#a5d6a7';
+    default: return '#e0e0e0';
+  }
 }
+}
+

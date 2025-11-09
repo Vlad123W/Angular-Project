@@ -4,14 +4,20 @@
          [alt]="product.image.alt"
          [width]="product.image.width"
          [height]="product.image.height">
-    <span class="new-badge" *ngIf="product.isNew">New</span>
+    <span class="new-badge" 
+          *ngIf="product.isNew"
+          [ngClass]="{'highlight': product.isNew}">New</span>
   </div>
   <div class="product-info">
-    <h3 class="product-name">{{ product.name }}</h3>
+    <h3 class="product-name" [ngStyle]="{'color': product.isNew ? '#2196F3' : '#333'}">
+      {{ product.name }}
+    </h3>
     <p class="product-description">{{ product.description }}</p>
     <div class="product-footer">
       <span class="price">{{ product.price }} ₴</span>
-      <span class="category">{{ product.category }}</span>
+     <span class="category" [ngStyle]="{'background-color': getCategoryColor()}">
+        {{ product.category }}
+      </span>
     </div>
   </div>
 </div>
