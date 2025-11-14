@@ -6,11 +6,91 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 520px;
+  margin: 16px 0;
+  position: relative;
+}
 
+.search-input {
+  flex: 1;
+  padding: 10px 14px;
+  padding-right: 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 14px;
+  transition: box-shadow .12s ease, border-color .12s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #2196f3;
+  box-shadow: 0 6px 20px rgba(33,150,243,0.08);
+}
+
+.search-clear {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background .12s ease, color .12s ease;
+}
+
+.search-clear:hover {
+  background: rgba(0,0,0,0.06);
+  color: #333;
+}
+.search-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #2196f3;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+  outline: none;
+  flex-shrink: 0; /* Забороняємо кнопці стискатися */
+}
+
+.search-button:hover {
+  background-color: #1976d2;
+}
+
+.search-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.4);
+}
+
+/* 6. Оновлення в @media (додайте .search-button та .search-container) */
 @media (max-width: 768px) {
+  .search-container { 
+    max-width: 100%; 
+  }
+
+  .search-button {
+    font-size: 13px;
+    padding: 9px 14px;
+  }
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1rem;
     padding: 1rem;
   }
+
+  .search-wrapper { max-width: 100%; }
+  .search-input { font-size: 13px; padding: 9px 12px; }
 }

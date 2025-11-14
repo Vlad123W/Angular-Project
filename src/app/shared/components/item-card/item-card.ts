@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../core/product';
 
@@ -11,13 +11,17 @@ import { Product } from '../core/product';
 })
 export class ItemCardComponent {
   @Input() product!: Product;
- 
+  @Output() selectProduct = new EventEmitter<Product>();
+
+  select(): void {
+    this.selectProduct.emit(this.product);
+  }
+
   getCategoryColor(): string {
-  switch(this.product.category.toLowerCase()) {
-    case 'men': return '#90caf9';
-    case 'women': return '#a5d6a7';
-    default: return '#e0e0e0';
+    switch(this.product.category.toLowerCase()) {
+      case 'men': return '#90caf9';
+      case 'women': return '#a5d6a7';
+      default: return '#e0e0e0';
+    }
   }
 }
-}
-

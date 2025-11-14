@@ -6,6 +6,34 @@
   transition: transform 0.2s;
 }
 
+.details-btn {
+  background: linear-gradient(90deg, #2196F3 0%, #1E88E5 100%);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(33, 150, 243, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+
+.details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.18);
+}
+
+.details-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(33, 150, 243, 0.16);
+}
+
+.details-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.12);
+}
+
 .product-card:hover {
   transform: translateY(-4px);
 }

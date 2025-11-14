@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ItemCardComponent } from '../item-card/item-card';
 import { Product } from '../core/product';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent],
+  imports: [CommonModule, FormsModule, ItemCardComponent],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent {
+    
   products: Product[] = [
     {
         id: 1,
@@ -69,4 +71,26 @@ export class ItemsListComponent {
         isNew: true
     }
   ];
+
+  searchTerm: string = '';
+  originalProducts: Product[] = [...this.products];
+  filteredProducts: Product[] = [...this.products];
+
+  onSelect(product: Product): void {
+    console.log('Selected product:', product);
+  }
+
+  onSearch() {
+    const term = this.searchTerm?.trim().toLowerCase();
+
+    if (!term) {
+      this.products = [...this.originalProducts];
+      return;
+    }
+
+    this.products = this.originalProducts.filter(p =>
+      (p.name || '').toLowerCase().includes(term) ||
+      (p.category || '').toLowerCase().includes(term)
+    );
+  }
 }
