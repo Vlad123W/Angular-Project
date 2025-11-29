@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../shared/components/core/product';
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,24 @@ export class Data {
       }
     ];
 
-    getItems(): Product[] {
-    return this.products;
+  private productsSubject = new BehaviorSubject<Product[]>(this.products);
+
+  getItems(): Observable<Product[]> {
+    return this.productsSubject.asObservable();
   }
+
+  filterItems(searchTerm: string): void {
+    const term = searchTerm?.trim().toLowerCase();
+
+    if (!term) {
+      this.productsSubject.next(this.products);
+    } else {
+      const filtered = this.products.filter(p =>
+        (p.name || '').toLowerCase().includes(term) ||
+        (p.category || '').toLowerCase().includes(term)
+      );
+      this.productsSubject.next(filtered);
+    }
+  }
+  
 }
