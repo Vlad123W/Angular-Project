@@ -18,7 +18,6 @@ export class ItemsListComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   searchTerm: string = '';
   
-  // Змінна для зберігання підписки, щоб потім її закрити
   private subscription: Subscription = new Subscription();
 
   constructor(private dataService: Data) { }
@@ -46,7 +45,6 @@ export class ItemsListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
-      console.log('ItemsListComponent: Відписка виконана успішно');
     }
   }
 }
