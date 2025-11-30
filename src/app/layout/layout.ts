@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ItemsListComponent } from '../shared/components/items-list/items-list';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterModule, ItemsListComponent],
+  imports: [RouterModule],
   templateUrl: './layout.html',
   styleUrls: ['./layout.css']
 })
