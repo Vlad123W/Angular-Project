@@ -69,7 +69,11 @@ export class Data {
   getItems(): Observable<Product[]> {
     return this.productsSubject.asObservable();
   }
-
+  
+  getItemById(id: number) {
+    return this.products.find(item => item.id === id);
+  }
+  
   filterItems(searchTerm: string): void {
     const term = searchTerm?.trim().toLowerCase();
 

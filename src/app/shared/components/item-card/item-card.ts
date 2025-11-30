@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../core/product';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.html',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   standalone: true,
   styleUrls: ['./item-card.css']
 })
