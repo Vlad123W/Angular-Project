@@ -1,21 +1,22 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ItemCardComponent } from '../item-card/item-card';
 import { Product } from '../core/product';
 import { Data } from '../../../services/data';
+import { HighlightDirective } from "../../../directives/highlight";
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ItemCardComponent],
+  imports: [CommonModule, FormsModule, ItemCardComponent, HighlightDirective],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent implements OnInit, OnDestroy { 
   
-  products: Product[] = [];
+  products$: Observable<Product[]> | undefined;
   searchTerm: string = '';
   
   private subscription: Subscription = new Subscription();
@@ -23,15 +24,7 @@ export class ItemsListComponent implements OnInit, OnDestroy {
   constructor(private dataService: Data) { }
 
   ngOnInit(): void {
-    const sub = this.dataService.getItems().subscribe({
-      next: (data: Product[]) => {
-        this.products = data;
-        console.log('Отримано оновлений список товарів:', this.products);
-      },
-      error: (err) => console.error('Помилка отримання даних:', err)
-    });
-
-    this.subscription.add(sub);
+    this.products$ = this.dataService.getItems();
   }
 
   onSearch(): void {

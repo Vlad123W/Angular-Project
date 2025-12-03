@@ -3,10 +3,15 @@
   <button type="button" class="search-button" (click)="onSearch()">Пошук</button>
 </div>
 
-<div class="products-grid">
+<div class="products-grid" *ngIf="products$ | async as products; else loading">
   <app-item-card 
     *ngFor="let product of products" 
     [product]="product"
-    (selectProduct)="onSelect($event)">
+    (selectProduct)="onSelect($event)"
+    appHighlight>
   </app-item-card>
 </div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

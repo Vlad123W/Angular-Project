@@ -2,11 +2,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../core/product';
 import { RouterModule } from '@angular/router';
+import { TruncatePipe } from "../../../pipes/truncate-pipe";
 
 @Component({
   selector: 'app-item-card',
   templateUrl: './item-card.html',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TruncatePipe],
   standalone: true,
   styleUrls: ['./item-card.css']
 })

@@ -1,82 +1,57 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 .product-card {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* Тінь зробимо м'якшою */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
   overflow: hidden;
-  transition: transform 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* transition перенесемо в директиву або залишимо тут, якщо директива міняє щось інше */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
 }
 
-.details-btn {
-  background: linear-gradient(90deg, #2196F3 0%, #1E88E5 100%);
-  border: none;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 3px 8px rgba(33, 150, 243, 0.18);
-  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
-}
-
-.details-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.18);
-}
-
-.details-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(33, 150, 243, 0.16);
-}
-
-.details-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.12);
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
-}
+/* Видаляємо .product-card:hover з CSS, тому що це тепер робить ДИРЕКТИВА appHighlight.
+   Якщо залишити і тут, і в директиві - можуть бути конфлікти. */
 
 .product-image {
   position: relative;
   width: 100%;
-  height: 300px;
-}
-
-.product-new {
-  border: 2px solid #2196F3;
-}
-
-.highlight {
-  background-color: #2196F3;
-  color: white;
-}
-
-.discount {
-  color: #e53935;
-  font-weight: bold;
+  height: 300px; /* Фіксована висота - це добре */
+  background-color: #f9f9f9;
 }
 
 .product-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* ВАЖЛИВО: Для одягу фокусуємось на верху картинки */
+  object-position: top center; 
 }
 
 .new-badge {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #ff4444;
+  background: #ff4444; /* Червоний */
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
 }
 
 .product-info {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Розтягуємо, щоб футер був знизу */
 }
 
 .product-name {
@@ -89,24 +64,51 @@
   color: #666;
   font-size: 0.9rem;
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .product-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: auto; /* Притискає футер до низу */
 }
 
 .price {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #2c3e50;
 }
 
 .category {
   text-transform: capitalize;
-  background: #f0f0f0;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  color: #333;
+  margin: 0 10px;
+}
+
+/* --- КНОПКА (твій код) --- */
+.details-btn {
+  background: linear-gradient(90deg, #2196F3 0%, #1E88E5 100%);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none; 
+  box-shadow: 0 3px 8px rgba(33, 150, 243, 0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+}
+
+.details-btn:active {
+  transform: translateY(0);
 }
