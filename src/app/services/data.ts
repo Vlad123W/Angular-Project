@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Product } from '../shared/components/core/product';
 @Injectable({
   providedIn: 'root'
 })
 export class Data {
-    products: Product[] = [
-      {
-          id: 1,
+  
+  products: Product[] = [
+    {
+      id: 1,
           name: 'Класичний костюм',
           price: 5999,
           category: 'men',
@@ -88,4 +89,32 @@ export class Data {
     }
   }
   
+  addItem(itemData: Product): Observable<Product> {
+    const maxId = this.products.length > 0 
+      ? Math.max(...this.products.map(p => p.id)) 
+      : 0;
+    
+    // 2. Формуємо фінальний об'єкт товару
+    const newProduct: Product = {
+      id: maxId + 1,
+      name: itemData.name,
+      description: itemData.description,
+      price: itemData.price,
+      category: itemData.category,
+      isNew: true, 
+
+      image: {
+        url: itemData.image.url, 
+        alt: itemData.name,
+        width: 300,  
+        height: 350
+      }
+    };
+
+    this.products.push(newProduct);
+    
+    console.log('Товар додано в масив:', this.products);
+
+    return of(newProduct);
+  }
 }

@@ -1,0 +1,74 @@
+<div class="form-container">
+  <h2>Додати новий товар</h2>
+
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="name">Назва товару</label>
+      <input 
+        id="name" 
+        type="text" 
+        formControlName="name" 
+        [class.invalid]="f['name'].invalid && f['name'].touched"
+        placeholder="Введіть назву...">
+      
+      <div class="error-msg" *ngIf="f['name'].invalid && f['name'].touched">
+        <small *ngIf="f['name'].errors?.['required']">Це поле обов'язкове.</small>
+        <small *ngIf="f['name'].errors?.['minlength']">Мінімум 3 символи.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Опис</label>
+      <textarea 
+        id="description" 
+        rows="3" 
+        formControlName="description"
+        [class.invalid]="f['description'].invalid && f['description'].touched"></textarea>
+      
+      <div class="error-msg" *ngIf="f['description'].invalid && f['description'].touched">
+        <small>Опис обов'язковий (макс. 200 символів).</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Ціна (₴)</label>
+      <input 
+        id="price" 
+        type="number" 
+        formControlName="price"
+        [class.invalid]="f['price'].invalid && f['price'].touched">
+      
+      <div class="error-msg" *ngIf="f['price'].invalid && f['price'].touched">
+        <small>Вкажіть коректну ціну.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Категорія</label>
+      <select id="category" formControlName="category">
+        <option value="electronics">Електроніка</option>
+        <option value="clothing">Одяг</option>
+        <option value="home">Дім</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Посилання на фото</label>
+      <input 
+        id="imageUrl" 
+        type="text" 
+        formControlName="imageUrl"
+        placeholder="https://example.com/image.jpg"
+        [class.invalid]="f['imageUrl'].invalid && f['imageUrl'].touched">
+        
+        <div class="error-msg" *ngIf="f['imageUrl'].invalid && f['imageUrl'].touched">
+          <small>Введіть коректне посилання (http/https).</small>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="itemForm.invalid" class="submit-btn">
+      Створити товар
+    </button>
+  </form>
+</div>

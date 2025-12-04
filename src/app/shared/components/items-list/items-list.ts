@@ -6,11 +6,12 @@ import { ItemCardComponent } from '../item-card/item-card';
 import { Product } from '../core/product';
 import { Data } from '../../../services/data';
 import { HighlightDirective } from "../../../directives/highlight";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ItemCardComponent, HighlightDirective],
+  imports: [CommonModule, FormsModule, ItemCardComponent, HighlightDirective, RouterModule],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
