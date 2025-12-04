@@ -18,12 +18,10 @@ export class ItemDetails implements OnInit {
   private itemsService = inject(Data);
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const id = Number(params.get('id'));
-      
-      if (id) {
-        this.item = this.itemsService.getItemById(id);
-      }
-    });
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+  
+    this.itemsService.getItemById(id).subscribe(product => {
+    this.item = product;
+  });
   }
 }

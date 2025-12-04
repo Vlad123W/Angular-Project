@@ -25,11 +25,11 @@ export class ItemsListComponent implements OnInit, OnDestroy {
   constructor(private dataService: Data) { }
 
   ngOnInit(): void {
-    this.products$ = this.dataService.getItems();
+    this.products$ = this.dataService.getAllProducts();
   }
 
   onSearch(): void {
-    this.dataService.filterItems(this.searchTerm);
+    this.products$ = this.dataService.filterItems(this.searchTerm);
   }
 
   onSelect(product: Product): void {
