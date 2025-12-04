@@ -89,12 +89,11 @@ export class Data {
     }
   }
   
-  addItem(itemData: Product): Observable<Product> {
+  addItem(itemData: any): Observable<Product> {
     const maxId = this.products.length > 0 
       ? Math.max(...this.products.map(p => p.id)) 
       : 0;
     
-    // 2. Формуємо фінальний об'єкт товару
     const newProduct: Product = {
       id: maxId + 1,
       name: itemData.name,
@@ -104,7 +103,7 @@ export class Data {
       isNew: true, 
 
       image: {
-        url: itemData.image.url, 
+        url: itemData.imageUrl,  
         alt: itemData.name,
         width: 300,  
         height: 350

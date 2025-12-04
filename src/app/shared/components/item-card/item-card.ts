@@ -23,6 +23,9 @@ export class ItemCardComponent {
     switch(this.product.category.toLowerCase()) {
       case 'men': return '#90caf9';
       case 'women': return '#a5d6a7';
+      case 'clothing': return '#f48fb1';
+      case 'electronics': return '#ffe082';
+      case 'books': return '#ce93d8';
       default: return '#e0e0e0';
     }
   }
