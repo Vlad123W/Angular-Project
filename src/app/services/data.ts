@@ -10,10 +10,9 @@ export class Data {
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('items').pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get<Product[]>('items');
   }
+
   addItem(itemData: any): Observable<Product> {
      const newProduct = {
        name: itemData.name,
@@ -29,15 +28,11 @@ export class Data {
        }
      };
   
-     return this.http.post<Product>('items', newProduct).pipe(
-       catchError(this.handleError)
-     );
+     return this.http.post<Product>('items', newProduct);
    }
  
  getItemById(id: number): Observable<Product> {
-  return this.http.get<Product>(`items/${id}`).pipe(
-    catchError(this.handleError) 
-  );
+  return this.http.get<Product>(`items/${id}`);
 }
   
   filterItems(searchTerm: string): Observable<Product[]> {
@@ -48,18 +43,7 @@ export class Data {
     }
 
     return this.http.get<Product[]>('items', {
-      params: { q: term }}).pipe(catchError(this.handleError));
+      params: { q: term }});
   }
-  
 
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Невідома помилка!';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Помилка клієнта: ${error.error.message}`;
-    } else {
-      errorMessage = `Код сервера: ${error.status}\nПовідомлення: ${error.message}`;
-    }
-    console.error(errorMessage);
-    return throwError(() => new Error(errorMessage));
-  } 
 }
